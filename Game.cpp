@@ -35,13 +35,15 @@ Game::Game(std::string team1, std::string team2){
 
 // Matches the player by a string match of their name (non-greedy)
 Player Game::get_player_by_name(std::string find){
+  Player found = DEFAULT_PLAYER;
   for(int team=0; team < TEAMS; team++){
     for(int i=0; i<roster[team].size(); i++){
       if( find == roster[team][i].get_name() )
-        return roster[team][i];
+        found = roster[team][i];
     }
   }
-  return DEFAULT_PLAYER;
+
+  return found;
 }
 
 // Records a player's goal in the current period for the team containing
